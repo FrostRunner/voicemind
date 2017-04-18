@@ -1,0 +1,8 @@
+{% extends "project_manager/base.html" %}
+{% block title %}VOICEMIND{% endblock %}
+
+{% block main %}
+    {% for element in elements %}
+        <p><a href="{% url redirect_link id=element.id %}">{{ element.movie_title }}</a></p>
+    {% endfor %}
+{% endblock %}
