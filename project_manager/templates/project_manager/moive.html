@@ -1,4 +1,6 @@
 {% extends "project_manager/base.html" %}
+{% load staticfiles %}
+
 {% block title %}VOICEMIND{% endblock %}
 
 {% block main %}
@@ -17,9 +19,8 @@
     <p class="movie">{{ movie.duration }}</p>
     <p class="movie">{{ movie.country }}</p>
     <p class="movie">{{ movie.imbb_score }}</p>
-    {% if movie.poster %}
-        <img src="{{ movie.poster.url }}" height="200">
-    {% endif %}
+    <img src="{{ movie.poster.url }}" height="300">
+
     {% for element in elements %}
         <p><a href="{% url redirect_link id=element.id %}">{{ element.first_name }} {{ element.last_name }}</a></p>
     {% endfor %}

@@ -3,6 +3,7 @@ from django.http import Http404
 from django.shortcuts import render
 
 from project_manager.models import Person, Movie
+from project_manager.forms import PosterForm
 
 
 
@@ -77,8 +78,9 @@ def category(request, cat=None):
                                                               "cats": sorted(cats),
                                                               })
 
-@login_required
+# @login_required
 def movie(request, id):
+    form = PosterForm()
     persons = Person.objects.filter(id=id)
     if id == None:
         movie = Movie.objects.first()
@@ -88,6 +90,7 @@ def movie(request, id):
                                                           "redirect_link": "person",
                                                           "movie": movie,
                                                           "cats": sorted(cats),
+                                                          "form": form,
                                                           })
 
 

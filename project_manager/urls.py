@@ -2,6 +2,7 @@ from django.conf.urls import url, include
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, Group
 from rest_framework.urlpatterns import format_suffix_patterns
+from django.views.static import serve
 
 from django.conf import settings
 from django.conf.urls.static import static

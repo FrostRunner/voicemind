@@ -49,7 +49,7 @@ class Movie(models.Model):
     aspect_ratio = models.CharField(max_length=256, default="")
     movie_facebook_likes = models.CharField(max_length=256, default="")
     poster = models.ImageField(upload_to="movie/{}/poster/".format(id),
-                               default="movie/default/poster/default.png", blank=True, null=True)
+                               default="movie/default/poster/default.png")
 
 
     def __str__(self):
