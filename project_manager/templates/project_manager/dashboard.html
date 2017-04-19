@@ -3,6 +3,19 @@
 
 {% block main %}
     {% for element in elements %}
-        <p><a href="{% url redirect_link id=element.id %}">{{ element.movie_title }}</a></p>
+        <div id="element-list">
+        <td>
+            <tr>
+                <img src="{{ element.poster.url }}" height="30">
+            </tr>
+            <tr>
+                <H2><a href="{% url redirect_link id=element.id %}">{{ element.movie_title }}</a></H2>
+            </tr>
+
+        </td>
+{#                <img src="{{ element.poster.url }}" height="30">#}
+{#                <H2><a href="{% url redirect_link id=element.id %}">{{ element.movie_title }}</a></H2>#}
+        </div>
+
     {% endfor %}
 {% endblock %}

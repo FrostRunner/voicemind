@@ -6,9 +6,6 @@ from __future__ import unicode_literals
 from django.db import models
 
 
-from django.contrib.auth.models import AbstractUser
-
-
 class Person(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -16,7 +13,6 @@ class Person(models.Model):
 
     def __str__(self):
         return " ".join([self.first_name, self.last_name])
-
 
 
 class Movie(models.Model):
@@ -48,13 +44,25 @@ class Movie(models.Model):
     imdb_score = models.CharField(max_length=256, default="")
     aspect_ratio = models.CharField(max_length=256, default="")
     movie_facebook_likes = models.CharField(max_length=256, default="")
-    poster = models.ImageField(upload_to="movie/{}/poster/".format(id),
+    poster = models.ImageField(upload_to="movie/{}/poster/".format(id(object)),
                                default="movie/default/poster/default.png")
-
+    trailer = models.CharField(max_length=255, null=True, blank=True,
+                               default="movie/default/trailer/default.mp4")
 
     def __str__(self):
         return self.original_name
 
+    # @property
+    # def movie_id(self):
+    #     return self.id
+
+    @property
+    def get_poster_upload_folder(self):
+        return "movie/{}/poster/".format(self.id)
+
+    def put_poster(self):
+        models.ImageField(upload_to=self.get_poster_upload_folder,
+                          default="movie/default/poster/default.png")
 
     class Meta:
         # ordering = ["-project", "summary"]

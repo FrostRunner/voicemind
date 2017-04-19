@@ -9,22 +9,24 @@
     <title>VOICEMIND</title>
 </head>
 <body>
-    <div id="header">
-        <h1><a href="{% url "index" %}">VOICEMIND</a></h1>
-    </div>
-    <div id="leftmenu">
-        <ul>
-            {% for cat in cats %}
-                <li><a href="{% url "category" cat %}">{{ cat }}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div id="main">
-        {% block main %}
-        {% endblock %}
-    </div>
-    <div id="footer">
-        <p>Все права принадлежат разработчикам сайта</p><p>Funny Org corporation</p>
+    <div id="area">
+            <div id="header">
+                <h1><a href="{% url "index" %}">VOICEMIND</a></h1>
+            </div>
+            <div id="leftmenu">
+                <ul>
+                    {% for cat in cats %}
+                        <li><a href="{% url "category" cat %}">{{ cat }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div id="main">
+                {% block main %}
+                {% endblock %}
+            </div>
+            <div id="footer">
+                <p>Все права принадлежат разработчикам сайта</p><p>Funny Org corporation</p>
+            </div>
     </div>
 </body>
 </html>

@@ -21,6 +21,13 @@
     <p class="movie">{{ movie.imbb_score }}</p>
     <img src="{{ movie.poster.url }}" height="300">
 
+
+    <video src="default.mp4" width=640 height=360 controls autoplay >
+{#    <video width="320" height="240" autoplay>#}
+{#        <source src="{{ movie.trailer }}" type="video/mp4"> Your browser does not support the video tag.#}
+{#        <source src="default.mp4" type="video/mp4"> Your browser does not support the video tag.#}
+{#    </video>#}
+
     {% for element in elements %}
         <p><a href="{% url redirect_link id=element.id %}">{{ element.first_name }} {{ element.last_name }}</a></p>
     {% endfor %}

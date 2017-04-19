@@ -21,7 +21,10 @@ urlpatterns = [
     url(r'^api/groups/$', GroupList.as_view(queryset=Group.objects.all()), name='group-list'),
     url(r'^api/groups/(?P<pk>\d+)/$', GroupDetail.as_view(queryset=Group.objects.all()),
         name='group-detail'),
-    url(r'^movie/(?P<id>\d+)/$', login_required(views.movie), name="movie"),
+
+
+    # url(r'^movie/(?P<id>\d+)/$', login_required(views.movie), name="movie"), # LOGIN
+    url(r'^movie/(?P<id>\d+)/$', views.movie, name="movie"),
     url(r'^person/(?P<id>\d+)/$', views.person, name="person"),
 ]
 

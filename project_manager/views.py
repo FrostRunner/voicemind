@@ -80,12 +80,16 @@ def category(request, cat=None):
 
 # @login_required
 def movie(request, id):
-    form = PosterForm()
     persons = Person.objects.filter(id=id)
     if id == None:
         movie = Movie.objects.first()
     else:
         movie = Movie.objects.get(pk=id)
+
+    form = PosterForm(request.POST, request.FILES, instance=movie)
+    if form.is_valid():
+        form.save()
+
     return render(request, "project_manager/moive.html", {"elements": persons,
                                                           "redirect_link": "person",
                                                           "movie": movie,
