@@ -1,0 +1,115 @@
+{% extends "movie_app/base.html" %}
+{% load staticfiles %}
+
+{% block title %}VOICEMIND{% endblock %}
+
+{% block main %}
+    <div>
+        <div class="row">
+            <h4>Смотреть онлайн:</h4>
+            <H1>{{ movie.title_ru }}</H1>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-5">
+                {#                <form enctype="multipart/form-data" action="" method="post">#}
+                {#                    {% csrf_token %}#}
+                {#                    <div class="field-wrapper">#}
+                {#                        {{ form.as_p }}#}
+                {#                    </div>#}
+                {#                    <input type="submit" value="Submit"/>#}
+                {#                </form>#}
+                <img src="{{ movie.poster.url }}" height="300">
+            </div>
+            <div class="description col-sm-3 col-md-7">
+                <table cellspacing="0" cellpadding="0" id="maket">
+                    <tr>
+                        <td id="leftcol" width="50">Рейтинги:</td>
+                        <td>{{ movie.imdb_score }}</td>
+                    </tr>
+                    <tr>
+                        <td id="leftcol" width="100">Жанр:</td>
+                        <td>
+                            {% for genre in movie.genre_list %}
+                                <a href="{% url "category" genre %}">{{ genre }}</a>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="leftcol" width="100">Дата выхода:</td>
+                        <td>{{ movie.title_year }}</td>
+                    </tr>
+                    <tr>
+                        <td id="leftcol" width="50">Страна:</td>
+                        <td>{{ movie.country }}</td>
+                    </tr>
+                    <tr>
+                        <td id="leftcol" width="50">Режиссер:</td>
+                        <td>
+                            _------__--__--
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="leftcol" width="50">Время:</td>
+                        <td>{{ movie.duration }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <H2 >Про что сериал {{ movie.title_ru }}:</H2>
+            Если бы у Марины спросили: есть ли на свете счастливые семьи? Она без колебаний ответила
+            бы, что это их с Владом случай. Они живут душа в душу, работают, воспитывают двоих
+            ребятишек – Дениску и Леночку. Супруг работает в строительной компании и уверенно
+            движется по карьерной лестнице, получая достойное вознаграждение. Марина давно не
+            работает, ведет хозяйство и занимается детьми.
+            Безмятежное счастье длится до тех пор, пока Марина не прочитала в телефоне обожаемого
+            мужа смс. Будто гром грянул с небес! У Влада есть любовница! Они познакомились, когда
+            Эллу пригласили в строительную компанию разработать концепцию рекламной акции. Герой
+            фильма был настолько очарован журналисткой, что ни на минуту не хотел расставаться и
+            представил девушку своему шефу, как гения рекламы.
+            Спокойная жизнь начинает рушиться. Сначала Марина хотела поговорить с любовницей мужа,
+            подруга категорически не советует этого делать, нечего строить предположения, надо
+            убедиться наверняка. Измученная ревностью женщина устраивает слежку за неверным
+            супругом. Оказалось, Элла Викторовна руководит работой журнала «Деловой стиль». Давно
+            позабывшая свои профессиональные навыки Марина идет под своей девичьей фамилией на
+            собеседование. Она принята на должность офис-менеджера!
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-12">
+{#                <video width="640" height="480" controls>#}
+{#                    <source src="{{ movie.trailer }}" type="video/mp4">#}
+{#                    Your browser does not support the video tag.#}
+{#                </video>#}
+
+                <div id="visearch"></div>
+
+                <iframe src={{ movie.iframe_url }}
+                        width="610" height="370" frameborder="0" allowfullscreen></iframe>
+
+
+{#                <script type="text/javascript">#}
+{#                    var moon_params = {#}
+{#                        width: 600   <sc                        height: 400,#}
+{#                        on_dom_ready: true,#}
+{#                        kp_id: 678552,#}
+{#                        replace_domains: ['vk.com', 'moonwalk.co']#}
+{#                    };#}
+{##}
+{#                    !function (e, n, t, r, a) {#}
+{#                        r = e.createElement(n), a = e.getElementsByTagName(n)#}
+{#                            [0], r.async = !0, r.src = t, a.parentNode.insertBefore(r, a)#}
+{#                    }#}
+{#                    (document, "script", "//visearch.info/v2/find-player.min.js");#}
+{#                </script>#}
+            </div>
+        </div>
+    </div>
+
+
+
+    {% for element in elements %}
+        <p>
+            <a href="{% url redirect_link id=element.id %}">{{ element.first_name }} {{ element.last_name }}</a>
+        </p>
+    {% endfor %}
+{% endblock %}

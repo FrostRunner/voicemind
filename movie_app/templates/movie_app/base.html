@@ -1,0 +1,94 @@
+{% load staticfiles %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang={{ LANGUAGE_CODE }} xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <link type="text/css" href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+    <link type="text/css" href="{% static "main.css" %}" rel="stylesheet">
+    <title>VOICEMIND</title>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <script src="{% static "app.js" %}"></script>
+
+</head>
+<body style="background-color: #000">
+
+
+<div class="container" style="background-color: #FFF">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="navbar-collapse collapse">
+                    <a class="navbar-brand" href="{% url "index" %}">VOICEMIND</a>
+                <form class="navbar-form navbar-right" role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search...">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-success">Sign in</button>
+                </form>
+            </div><!--/.navbar-collapse -->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="col-sm-3 col-md-2">
+                <ul class="nav nav-sidebar">
+                    {% for cat in cats %}
+                        <li><a href="{% url "category" cat %}">{{ cat }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <ul>
+
+            </ul>
+        </div>
+
+        <div class="col-md-9">
+            {% block main %}
+            {% endblock %}
+        </div>
+
+
+{#        <div class="col-md-2">#}
+{##}
+{#            <div class="col-sm-3 col-md-2">#}
+{#                <ul class="nav nav-sidebar">#}
+{#                    {% for cat in cats %}#}
+{#                        <li><a href="{% url "category" cat %}">РЕКЛАМА</a></li>#}
+{#                    {% endfor %}#}
+{#                </ul>#}
+{#            </div>#}
+{#            <ul>#}
+{##}
+{#            </ul>#}
+{#        </div>#}
+
+    </div>
+    <div class="row">
+        <div class="col-md-12"
+             style="background-color: #000; color: white" ; align="center">
+            <p><br></p>
+            <p>Все права принадлежат разработчикам сайта</p>
+            <p>Funny Org corporation</p>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

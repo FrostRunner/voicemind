@@ -25,7 +25,7 @@ SECRET_KEY = 'xl3y@qz8=x-e%vslw#0)74%kfgw%dunwg_gf@*w5tqbj035hm0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["10.248.44.151", "127.0.0.1"]
+ALLOWED_HOSTS = ["10.250.51.15", "127.0.0.1"]
 
 
 # Application definition
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'page',
-    'project_manager',
+    'movie_app',
     'snippets.apps.SnippetsConfig',
     'rest_framework',
 ]

@@ -1,7 +1,7 @@
-from django.conf.urls import url
+from django.urls import path
 from snippets import views
 
 urlpatterns = [
-    url(r'^snippets/$', views.snippet_list),
-    url(r'^snippets/(?P<pk>[0-9]+)/$', views.snippet_detail),
+    path(r'^snippets/$', views.snippet_list),
+    path(r'^snippets/(?P<pk>[0-9]+)/$', views.snippet_detail),
 ]

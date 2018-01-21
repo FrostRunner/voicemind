@@ -1,0 +1,43 @@
+{% extends "movie_app/base.html" %}
+{% block title %}VOICEMIND{% endblock %}
+
+{% block main %}
+    <div class="treasure panel panel-default">
+        <div class="row">
+            {% for element in elements %}
+                <div class="col-md-3">
+
+                    <div class="col-md-12">
+                        <a href="{% url redirect_link id=element.id %}">
+                            <img src="{{ element.poster.url }}" height=100% width=100%>
+                            <h5 class="panel-title">{{ element.title_ru }}(2017)</h5>
+                        </a>
+                        <small>2017, {{ element.country }}, {{ element.genres }}</small>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:4 %}
+                    </div>
+                    <div class="row">
+                {% endif %}
+            {% endfor %}
+            </div>
+            {# PAGINATOR #}
+        <div class="row">
+            <div id="pages" align="center">
+                <ul class="pagination">
+                    {% if elements.has_previous %}
+                        <li><a href="?page={{ elements.previous_page_number }}">Previous</a></li>
+                    {% endif %}
+                    <li><a href="?page=1">1</a></li>
+                    <li><a href="?page={{ elements.number }}">Page {{ elements.number }}</a></li>
+                    <li><a href="?page={{ elements.paginator.num_pages }}">{{ elements.paginator.num_pages }}</a></li>
+                    {% if elements.has_next %}
+                        <li><a href="?page={{ elements.next_page_number }}">Next</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
